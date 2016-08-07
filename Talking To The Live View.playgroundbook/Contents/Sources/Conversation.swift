@@ -39,7 +39,7 @@ class Conversation {
 
     /// Note, can only transition on the main thread.
     func transition(toState nextState: State) {
-        precondition(Thread.isMainThread(), "Can only transition state on the main thread.")
+        precondition(Thread.isMainThread, "Can only transition state on the main thread.")
         precondition(currentState.canTransition(toState: nextState), "Cannot transition from \(currentState) to \(nextState).")
 
         let oldState = currentState

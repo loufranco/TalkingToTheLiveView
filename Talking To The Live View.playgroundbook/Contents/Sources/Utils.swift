@@ -43,7 +43,7 @@ public func normalize(text: String) -> String {
 
 /// Converts the string into lowercase keyword tokens
 public func tokenize(text: String) -> [String] {
-    let allowedCharacterSet = NSCharacterSet.alphanumerics().inverted
+    let allowedCharacterSet = NSCharacterSet.alphanumerics.inverted
     let split: [String] = text.components(separatedBy: allowedCharacterSet)
     let nonEmpty: [String] = split.filter{$0 != ""}
     let lowercased: [String] = nonEmpty.map { w in w.lowercased() }
