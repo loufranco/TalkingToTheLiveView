@@ -17,7 +17,7 @@ public func flipACoin() -> Bool {
 /// `interval` seconds before executing the `work` block.
 public func after(_ interval: TimeInterval, work: () -> ()) {
     let time: DispatchTime = DispatchTime.now() + .milliseconds(Int(interval * 1000.0))
-    DispatchQueue.main.after(when: time) {
+    DispatchQueue.main.asyncAfter(deadline: time) {
         work()
     }
 }

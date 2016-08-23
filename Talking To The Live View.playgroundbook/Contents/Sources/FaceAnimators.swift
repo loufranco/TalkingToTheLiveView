@@ -86,7 +86,7 @@ class NeutralFaceAnimator: FaceAnimator {
         guard self.running, let faceView = self.faceView else { return }
 
         self.nodding = true
-        let nod = CGAffineTransform.identity.rotate(flipACoin() ? 0.1 : -0.1)
+        let nod = CGAffineTransform(rotationAngle: flipACoin() ? 0.1 : -0.1)
 
         UIView.animate(withDuration: 0.2, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
             faceView.transform = nod
@@ -148,10 +148,10 @@ class LaughingFaceAnimator: FaceAnimator {
 
         after(0.8) {
             UIView.animate(withDuration: 1, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-                faceView.transform = CGAffineTransform.identity.translateBy(x: 0, y: -40)
+                faceView.transform = CGAffineTransform(translationX: 0, y: -40)
             }) { _ in
                 UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-                    faceView.transform = CGAffineTransform.identity.translateBy(x: 0, y: 3)
+                    faceView.transform = CGAffineTransform(translationX: 0, y: 3)
                 }) { _ in
                     self.giggleUntilToldToStop()
                 }
@@ -167,10 +167,10 @@ class LaughingFaceAnimator: FaceAnimator {
         faceView.image = #imageLiteral(resourceName: "laughtears")
 
         UIView.animate(withDuration: 0.1, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-            faceView.transform = CGAffineTransform.identity.scaleBy(x: 1, y: 0.95).rotate(0.1 * self.lastTiltAdjustment)
+            faceView.transform = CGAffineTransform(scaleX: 1, y: 0.95).rotated(by: 0.1 * self.lastTiltAdjustment)
         }) { _ in
             UIView.animate(withDuration: 0.1, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-                faceView.transform = CGAffineTransform.identity.rotate(0.1 * -self.lastTiltAdjustment)
+                faceView.transform = CGAffineTransform(rotationAngle: 0.1 * -self.lastTiltAdjustment)
             }) { _ in
                 if self.whenDoneRunning != nil {
                     self.cleanup()
@@ -184,7 +184,7 @@ class LaughingFaceAnimator: FaceAnimator {
 
     func cleanup() {
         UIView.animate(withDuration: 0.3, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-            self.faceView?.transform = CGAffineTransform.identity
+            self.faceView?.transform = CGAffineTransform()
         }) { _ in
             self.running = false
             self.whenDoneRunning?()
@@ -226,11 +226,11 @@ class ConfusedFaceAnimator: FaceAnimator {
         guard running, let faceView = faceView else { cleanup(); return }
 
         UIView.animate(withDuration: 1, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-            faceView.transform = CGAffineTransform.identity.scaleBy(x: 0.90, y: 1)
+            faceView.transform = CGAffineTransform(scaleX: 0.90, y: 1)
         }) { _ in
             faceView.image = #imageLiteral(resourceName: "confused")
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-                faceView.transform = CGAffineTransform.identity
+                faceView.transform = CGAffineTransform()
             }) { _ in
                 self.blocking = false
                 if self.whenDoneRunning != nil {
@@ -248,7 +248,7 @@ class ConfusedFaceAnimator: FaceAnimator {
         after(timeUntilNod) {
             guard self.running, let faceView = self.faceView else { self.cleanup(); return }
 
-            let nod = CGAffineTransform.identity.rotate(flipACoin() ? 0.1 : -0.1)
+            let nod = CGAffineTransform(rotationAngle:flipACoin() ? 0.1 : -0.1)
 
             self.blocking = true
 
@@ -311,14 +311,14 @@ class AnnoyedFaceAnimator: FaceAnimator {
         guard running, let faceView = faceView else { cleanup(); return }
 
         UIView.animate(withDuration: 1, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-            faceView.transform = CGAffineTransform.identity.scaleBy(x: 1, y: 0.9)
+            faceView.transform = CGAffineTransform(scaleX: 1, y: 0.9)
         }) { _ in
             after(0.5) {
                 guard self.running, let faceView = self.faceView else { self.cleanup(); return }
 
                 faceView.image = #imageLiteral(resourceName: "annoyed")
                 UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-                    faceView.transform = CGAffineTransform.identity
+                    faceView.transform = CGAffineTransform()
                 }) { _ in
                     self.blocking = false
                     if self.whenDoneRunning != nil {
@@ -337,7 +337,7 @@ class AnnoyedFaceAnimator: FaceAnimator {
         after(timeUntilNod) {
             guard self.running, let faceView = self.faceView else { self.cleanup(); return }
 
-            let nod = CGAffineTransform.identity.translateBy(x: (flipACoin() ? 6 : -6), y: 0)
+            let nod = CGAffineTransform(translationX: (flipACoin() ? 6 : -6), y: 0)
 
             self.blocking = true
 

@@ -108,7 +108,7 @@ public class FaceViewController: UIViewController, UIGestureRecognizerDelegate {
         case .began, .changed:
             faceView.backgroundColor = UIColor(white: 0, alpha: 0.1)
         case .ended, .cancelled, .failed, .possible:
-            faceView.backgroundColor = .clear()
+            faceView.backgroundColor = .clear
         }
     }
 
@@ -147,7 +147,7 @@ public class FaceViewController: UIViewController, UIGestureRecognizerDelegate {
     public func reply(_ message: String, bounce: Bool = false) {
         if bounce {
             UIView.animate(withDuration: 0.2, delay: 0, options: [.beginFromCurrentState], animations: {
-                self.faceView.transform = CGAffineTransform.identity.translateBy(x: 0, y: 10)
+                self.faceView.transform = CGAffineTransform(translationX: 0, y: 10)
             }) { _ in
                 UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [.beginFromCurrentState], animations: {
                     self.faceView.transform = CGAffineTransform.identity
@@ -250,7 +250,7 @@ public class FaceViewController: UIViewController, UIGestureRecognizerDelegate {
 
         after(10) { [weak self] in
             // If we've already moved on, then just let the conversation continue
-            guard let conversation = self?.conversation where conversation.generation == oldConversationGeneration else { return }
+            guard let conversation = self?.conversation, conversation.generation == oldConversationGeneration else { return }
 
             conversation.transition(toState: .waitingForKnock)
         }
