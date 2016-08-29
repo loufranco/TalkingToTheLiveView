@@ -12,6 +12,8 @@ As of 2016-Aug-07, the only way I can see to get a playground book to the iPad i
 
 2016-08-23: Updated to iOS 10 Beta 7
 
+2016-08-29: Still works with iOS 10 Beta 8 with no further changes
+
 ## Original README follows
 
 This Playground Book demonstrates how to talk to the always-on live view process from the main process running the code in the editor.
