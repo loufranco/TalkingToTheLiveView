@@ -4,15 +4,19 @@ NOTE: The [TalkingToTheLiveView sample from WWDC](https://developer.apple.com/li
 
 The LICENSE.txt file is the original one from Apple. All of my commits are in the public domain.
 
-As of 2016-Aug-07, the only way I can see to get a playground book to the iPad is via AirDrop.  
+## Change Log
+
+2016-Sep-14: Updated to iOS 10.0.1
+
+2016-Aug-29: Still works with iOS 10 Beta 8 with no further changes
+
+2016-Aug-23: Updated to iOS 10 Beta 7
+
+2016-Aug-07: the only way I can see to get a playground book to the iPad is via AirDrop.  
 
 1. Open Playgrounds on your iPad 
 2. AirDrop the .playgroundbook folder to the iPad
 3. Follow instructions on the iPad (choose to AirDrop to Playgrounds)
-
-2016-08-23: Updated to iOS 10 Beta 7
-
-2016-08-29: Still works with iOS 10 Beta 8 with no further changes
 
 ## Original README follows
 

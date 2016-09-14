@@ -45,7 +45,7 @@ class FaceView: UIImageView {
     func stop(completion: (() -> ())? = nil) {
         currentFaceAnimator?.stop(doneCallback: {completion?()})
         currentFaceAnimator = nil
-        nextFaceAnimatorRequest?.callbackWhenStarted?(skipped: true)
+        nextFaceAnimatorRequest?.callbackWhenStarted?(true)
         nextFaceAnimatorRequest = nil
     }
 
@@ -53,9 +53,9 @@ class FaceView: UIImageView {
     /// is completed. `completion` is called back when this happens with `skipped`
     /// set to `true` if another state transition was requested in the meantime and
     /// this emotion was skipped.
-    func moveToEmotionWhenReady(newEmotion: Emotion, completion: ((skipped: Bool) -> ())? = nil) {
+    func moveToEmotionWhenReady(newEmotion: Emotion, completion: ((_: Bool) -> ())? = nil) {
         if let next = nextFaceAnimatorRequest {
-            next.callbackWhenStarted?(skipped: true)
+            next.callbackWhenStarted?(true)
         }
 
         let animator = makeAnimator(forEmotion: newEmotion)
@@ -66,7 +66,7 @@ class FaceView: UIImageView {
             guard let next = self.nextFaceAnimatorRequest else { return }
             self.currentFaceAnimator = next.animator
             self.currentFaceAnimator?.start()
-            next.callbackWhenStarted?(skipped: false)
+            next.callbackWhenStarted?(false)
             self.currentEmotion = next.emotion
         }
 
@@ -102,7 +102,7 @@ class FaceView: UIImageView {
     struct FaceAnimatorRequest {
         let animator: FaceAnimator
         let emotion: Emotion
-        let callbackWhenStarted: ((skipped: Bool) -> ())?
+        let callbackWhenStarted: ((_: Bool) -> ())?
     }
 
 }

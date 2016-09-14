@@ -15,7 +15,7 @@ public func flipACoin() -> Bool {
 
 /// Convenience wrapper around DispatchQueue.main.after that waits for
 /// `interval` seconds before executing the `work` block.
-public func after(_ interval: TimeInterval, work: () -> ()) {
+public func after(_ interval: TimeInterval, work: @escaping () -> ()) {
     let time: DispatchTime = DispatchTime.now() + .milliseconds(Int(interval * 1000.0))
     DispatchQueue.main.asyncAfter(deadline: time) {
         work()

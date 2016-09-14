@@ -44,11 +44,11 @@ class Conversation {
 
         let oldState = currentState
         currentState = nextState
-        transitionObserver?(oldState: oldState, newState: currentState)
+        transitionObserver?(oldState, currentState)
     }
 
     /// Block that is called whenever the state transitions.
-    var transitionObserver: ((oldState: State, newState: State) -> ())? = nil
+    var transitionObserver: ((_: State, _: State) -> ())? = nil
 }
 
 extension Conversation.State {

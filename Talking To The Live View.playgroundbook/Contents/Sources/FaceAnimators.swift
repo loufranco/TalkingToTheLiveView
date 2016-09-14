@@ -27,7 +27,7 @@ protocol FaceAnimator: class {
     func start()
 
     /// Requests to stop the animator. Calls the `doneCallback` when the animator is really done.
-    func stop(doneCallback: () -> ())
+    func stop(doneCallback: @escaping () -> ())
 
 }
 
@@ -46,7 +46,7 @@ class NeutralFaceAnimator: FaceAnimator {
         planToNod()
     }
 
-    func stop(doneCallback: () -> ()) {
+    func stop(doneCallback: @escaping () -> ()) {
         running = false
         if nodding {
             whenDoneNodding = doneCallback
@@ -130,7 +130,7 @@ class LaughingFaceAnimator: FaceAnimator {
         executeAnimation()
     }
 
-    func stop(doneCallback: () -> ()) {
+    func stop(doneCallback: @escaping () -> ()) {
         if running {
             whenDoneRunning = doneCallback
         }
@@ -210,7 +210,7 @@ class ConfusedFaceAnimator: FaceAnimator {
         executeAnimation()
     }
 
-    func stop(doneCallback: () -> ()) {
+    func stop(doneCallback: @escaping () -> ()) {
         running = false
         if blocking {
             whenDoneRunning = doneCallback
@@ -295,7 +295,7 @@ class AnnoyedFaceAnimator: FaceAnimator {
         executeAnimation()
     }
 
-    func stop(doneCallback: () -> ()) {
+    func stop(doneCallback: @escaping () -> ()) {
         running = false
         if blocking {
             whenDoneRunning = doneCallback

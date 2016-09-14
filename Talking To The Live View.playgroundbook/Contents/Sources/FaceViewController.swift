@@ -256,7 +256,7 @@ public class FaceViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
 
-    private func addJokePattern(_ pattern: JokePattern) {
+    func addJokePattern(_ pattern: JokePattern) {
         // First check to see if we already have the pattern registered.
         // The setup/punchline pair must be unique.
         // Replace any existing patterns that match the same setup/punchline.
