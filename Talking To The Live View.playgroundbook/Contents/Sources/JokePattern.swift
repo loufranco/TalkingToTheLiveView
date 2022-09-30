@@ -55,7 +55,7 @@ public extension JokePattern {
      This enum provides specific error information if something goes wrong
      converting from a `PlaygroundValue` into a `JokePattern`.`
      */
-    public enum SerializationError: Error {
+    enum SerializationError: Error {
         case valueNotADictionary
         case missingSetupString
         case missingPunchlineString
