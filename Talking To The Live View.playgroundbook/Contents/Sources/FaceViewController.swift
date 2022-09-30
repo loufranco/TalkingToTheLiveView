@@ -46,7 +46,7 @@ public class FaceViewController: UIViewController, UIGestureRecognizerDelegate {
         faceView.translatesAutoresizingMaskIntoConstraints = true
         faceView.layer.masksToBounds = true
         faceView.layer.cornerRadius = 10
-        visualEffectView.addSubview(faceView)
+        visualEffectView.contentView.addSubview(faceView)
 
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
         tapGesture.delegate = self
