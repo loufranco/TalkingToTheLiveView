@@ -10,6 +10,8 @@
 	<string>1</string>
 	<key>DeploymentTarget</key>
 	<string>ios10.0</string>
+	<key>SwiftVersion</key>
+	<string>4.2</string>
 	<key>Name</key>
 	<string>Talking to the Live View</string>
 	<key>ImageReference</key>
